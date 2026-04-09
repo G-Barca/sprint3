@@ -1,0 +1,423 @@
+/**********************************
+  PALETA DE CORES
+  #66C845 - Verde 
+  #F68B1E - Laranja 
+  #333333 - Cinza 
+  #FFFFE0 - Amarelo claro
+**********************************/
+
+html {
+  background-color: #FFFFE0;
+  scroll-behavior: smooth;
+  font-family: 'Times New Roman', Times, serif;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== HEADER ===== */
+.header {
+  background-color: #5f5b5b;
+  border-bottom: 3px solid #66C845;
+  padding: 15px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-right: 20px;
+}
+
+.logo-img {
+  width: 60px;
+  height: 60px;
+  border: 2px solid #66C845;
+  border-radius: 50%;
+  object-fit: contain;
+  margin-right: 10px;
+  transition: transform 0.3s ease;
+}
+
+.logo-container:hover .logo-img {
+  transform: scale(1.05);
+}
+
+.logo-text {
+  opacity: 0;
+  color: #66C845;
+  font-weight: bold;
+  font-size: 20px;
+  transition: opacity 0.4s ease;
+}
+
+.logo-container:hover .logo-text {
+  opacity: 1;
+}
+
+/* ===== MENU ===== */
+.menu ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.menu ul li {
+  margin-bottom: 12px;   
+}
+
+.menu a {
+  background-color: #F68B1E;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 30px;
+  padding: 10px 20px;
+  border: 2px solid #333;
+  transition: all 0.3s ease;
+}
+
+.menu a.active {
+  background-color: #F68B1E;
+  color: #fff;
+  cursor: pointer;
+}
+
+.menu a:hover {
+  background-color: #fff;
+  color: #F68B1E;
+  transform: scale(1.05);
+}
+
+.btncadastro {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+/* ===== CONTEÚDO ===== */
+.conteudo {
+  flex-grow: 1;
+  max-width: 90%;
+  margin: 50px auto;
+  padding: 0 20px;
+  text-align: justify;
+}
+
+.acoes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.acao {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 90%;
+}
+
+.imagem {
+  position: relative;
+}
+
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+.imagem img {
+  width: 100%;
+  max-width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #5f5a5a;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14px;
+  margin-top: 0;
+}
+
+
+.sobre p {
+  font-size: 17px;
+}
+
+/* ===== CONTATO ===== */
+.githubs {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.pessoa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+
+.pessoa img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+.pessoa img:hover {
+  transform: scale(1.08);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.pessoa p {
+  margin-top: 10px;
+  font-size: 15px;
+  color: #333;
+}
+
+/* ===== AREA DO VOLUNTÁRIO ===== */
+.seja-voluntario {
+  width: 300px;
+  padding-top: 50px;
+  padding-left: 0px;
+  max-width: 100%;
+  
+}
+
+/* ========== RESPONSIVIDADE ========== */
+
+/* Extra small */
+@media (max-width: 600px) {
+
+  .conteudo {
+    padding: 0 10px;
+    max-width: 100%;
+  }
+
+  .header {
+    padding: 15px 10px;
+  }
+
+  .menu ul {
+    gap: 5px;
+  }
+
+  .menu a {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  .imagem img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .pessoa img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .seja-voluntario {
+    width: 70vw;
+    padding-bottom: 70vw;
+    margin: 30px auto;
+    font-size: 3.5vw;
+  }
+}
+
+@media (min-width: 600px) {
+  .conteudo {
+    max-width: 600px;
+  }
+
+  .menu ul {
+    gap: 20px;
+  }
+
+  .githubs {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/* Medium devices */
+@media (min-width: 768px) {
+
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px 40px;
+  }
+
+  .logo-container {
+    margin-bottom: 0;
+  }
+
+  .menu ul {
+    flex-wrap: nowrap;
+    gap: 25px;
+  }
+
+  .acoes {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+  }
+
+  .acao {
+    max-width: 48%;
+  }
+
+  .imagem img {
+    width: 200px;
+    height: 200px;
+    max-width: none;
+  }
+
+  .githubs {
+    gap: 50px;
+    flex-wrap: nowrap;
+  }
+
+  .pessoa img {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+/* Large devices */
+@media (min-width: 992px) {
+
+  .conteudo {
+    max-width: 960px;
+  }
+
+  .imagem img {
+    width: 250px;
+    height: 250px;
+  }
+
+  .menu a {
+    padding: 10px 30px;
+  }
+}
+
+/* Extra large devices */
+@media (min-width: 1300px) {
+
+  .conteudo {
+    max-width: 1100px;
+  }
+
+  .header {
+    padding: 15px 80px;
+  }
+}
+
+/* ===== Menu Mobile com hamburguer e animações ===== */
+.mobile-menu {
+  display: none;
+  cursor: pointer;
+}
+
+.mobile-menu div {
+  width: 32px;
+  height: 3px;
+  background: #fff;
+  margin: 6px;
+  transition: 0.3s;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+@media (max-width: 999px) {
+  .menu ul {
+    flex-direction: column;
+    position: absolute;
+    top: 80px;
+    right: 0;
+    background-color: #5f5b5b;
+    width: 30vw;
+    height: calc(100vh - 80px);
+    justify-content: start;
+    padding-top: 40px;
+    align-items: center;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in;
+    z-index: 9999;
+  }
+
+  .nav-list li {
+    opacity: 0;
+    margin: 15px 0;
+  }
+
+  .mobile-menu {
+    display: block;
+  }
+
+  .nav-list.active {
+    transform: translateX(0);
+  }
+
+  @keyframes navLinkFade {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .mobile-menu.active .line1 {
+    transform: rotate(-45deg) translate(-7px, 8px);
+  }
+
+  .mobile-menu.active .line2 {
+    opacity: 0;
+  }
+
+  .mobile-menu.active .line3 {
+    transform: rotate(45deg) translate(-5px, -7px);
+  }
+}
