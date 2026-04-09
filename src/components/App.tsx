@@ -7,7 +7,7 @@ import { Integrantes } from '../pages/Integrantes';
 import { Sobre } from '../pages/Sobre';
 import { Contato } from '../pages/Contato';
 import { FAQ } from '../pages/Faq';
-
+import { Cadastro } from '../pages/Cadastro';
 
 function App() {
   return (
@@ -19,6 +19,7 @@ function App() {
         <Route path="/sobre" element={<Sobre />} />
         <Route path="/contato" element={<Contato />} />
         <Route path="/faq" element={<FAQ />} />
+        <Route path="/cadastro" element={<Cadastro />} />
       </Routes>
       <Footer />
     </BrowserRouter>
