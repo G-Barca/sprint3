@@ -15,6 +15,7 @@ export function Header() {
           <li><Link to="/sobre">Sobre</Link></li>
           <li><Link to="/integrantes">Integrantes</Link></li>
           <li><Link to="/contato">Contato</Link></li>
+          <li><Link to="/voluntario">Voluntário</Link></li>
           <li><Link to="/faq">FAQ</Link></li>
           <li><Link className="btncadastro" to="/cadastro">Cadastro</Link></li>
         </ul>

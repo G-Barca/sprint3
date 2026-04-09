@@ -8,18 +8,20 @@ import { Sobre } from '../pages/Sobre';
 import { Contato } from '../pages/Contato';
 import { FAQ } from '../pages/Faq';
 import { Cadastro } from '../pages/Cadastro';
+import { Voluntario } from '../pages/Voluntario';
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/integrantes" element={<Integrantes />} />
-        <Route path="/sobre" element={<Sobre />} />
-        <Route path="/contato" element={<Contato />} />
-        <Route path="/faq" element={<FAQ />} />
-        <Route path="/cadastro" element={<Cadastro />} />
+        <Route path="/" element={<Home/>} />
+        <Route path="/integrantes" element={<Integrantes/>} />
+        <Route path="/sobre" element={<Sobre/>} />
+        <Route path="/contato" element={<Contato/>} />
+        <Route path="/faq" element={<FAQ/>} />
+        <Route path="/cadastro" element={<Cadastro/>} />
+        <Route path="/voluntario" element={<Voluntario/>} />
       </Routes>
       <Footer />
     </BrowserRouter>
