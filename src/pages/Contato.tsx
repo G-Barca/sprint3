@@ -1,31 +1,42 @@
-import { Link } from 'react-router-dom';
-
 export function Contato() {
   return (
     <main className="conteudo">
       <section className="contato">
         <article>
-          <h1>Entre em contato</h1>
-          <p>Dúvidas ou sugestões? Preencha o formulário abaixo:</p>
+          <h2>Insira suas informações de contato:</h2>
+      
+          <form id="formContato">
+            <label htmlFor="nome">Nome:</label><br />
+            <input type="text" id="nome" name="nome" required /><br /><br />
 
-          <form className="form-contato">
-            <div className="campo">
-              <label htmlFor="nome">Nome Completo:</label>
-              <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required />
-            </div>
+            <label htmlFor="cpf">CPF:</label><br />
+            <input type="text" id="cpf" name="cpf" maxLength={14} required /><br /><br />
 
-            <div className="campo">
-              <label htmlFor="email">E-mail:</label>
-              <input type="email" id="email" name="email" placeholder="seu@email.com" required />
-            </div>
+            <label htmlFor="email">Email:</label><br />
+            <input type="email" id="email" name="email" required /><br /><br />
 
-            <div className="campo">
-              <label htmlFor="mensagem">Mensagem:</label>
-              <textarea id="mensagem" name="mensagem" rows={5} placeholder="Como podemos ajudar?"></textarea>
-            </div>
+            <button type="submit">Enviar</button>
 
-            <button type="submit" className="btn-enviar">Enviar Mensagem</button>
+            <p id="erro" style={{ color: 'red', fontWeight: 'bold' }}></p>
           </form>
+
+          <h2>Fale Conosco</h2>
+          <img 
+            src="/img/tratamento.jpg" 
+            alt="Tratamento Odontológico" 
+            width="700" 
+            height="400" 
+          />
+
+          <address>
+            <p>
+              <strong>| Rua Maurício Francisco Klabin, 449 Vila Mariana, São Paulo – SP, 04120-020 |</strong>
+            </p>
+
+            <strong>Fone: +55 (11) 5084-7276 |</strong><br />
+            <strong>Presidente: turmadobem@tdb.org.br |</strong><br />
+            <strong>Comunicação: comunicacao@tdb.org.br |</strong>
+          </address>
         </article>
       </section>
     </main>
