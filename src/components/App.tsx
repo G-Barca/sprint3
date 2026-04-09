@@ -6,6 +6,8 @@ import { Home } from '../pages/Home';
 import { Integrantes } from '../pages/Integrantes';
 import { Sobre } from '../pages/Sobre';
 import { Contato } from '../pages/Contato';
+import { FAQ } from '../pages/Faq';
+
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
         <Route path="/integrantes" element={<Integrantes />} />
         <Route path="/sobre" element={<Sobre />} />
         <Route path="/contato" element={<Contato />} />
+        <Route path="/faq" element={<FAQ />} />
       </Routes>
       <Footer />
     </BrowserRouter>
