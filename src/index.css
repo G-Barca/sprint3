@@ -6,6 +6,11 @@
   #FFFFE0 - Amarelo claro
 **********************************/
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 html {
   background-color: #FFFFE0;
   scroll-behavior: smooth;
