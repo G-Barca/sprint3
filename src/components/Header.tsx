@@ -1,6 +1,12 @@
-import { Link } from 'react-router-dom'; 
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export function Header() {
+  const [menuAtivo, setMenuAtivo] = useState(false);
+  const toggleMenu = () => {
+    setMenuAtivo(!menuAtivo);
+  };
+
   return (
     <header className="header">
       <div className="logo-container">
@@ -11,15 +17,25 @@ export function Header() {
       </div>
 
       <nav className="menu">
-        <ul className="nav-list">
-          <li><Link to="/sobre">Sobre</Link></li>
-          <li><Link to="/integrantes">Integrantes</Link></li>
-          <li><Link to="/contato">Contato</Link></li>
-          <li><Link to="/voluntario">Voluntário</Link></li>
-          <li><Link to="/faq">FAQ</Link></li>
-          <li><Link className="btncadastro" to="/cadastro">Cadastro</Link></li>
-        </ul>
-      </nav>
+  <div 
+    className={`mobile-menu ${menuAtivo ? 'active' : ''}`} 
+    onClick={() => setMenuAtivo(!menuAtivo)}
+  >
+    <div className="line1"></div>
+    <div className="line2"></div>
+    <div className="line3"></div>
+  </div>
+
+ 
+  <ul className={`nav-list ${menuAtivo ? 'active' : ''}`}>
+    <li><Link to="/sobre">Sobre</Link></li>
+    <li><Link to="/integrantes">Integrantes</Link></li>
+    <li><Link to="/contato">Contato</Link></li>
+    <li><Link to="/voluntario">Voluntário</Link></li>
+    <li><Link to="/faq">FAQ</Link></li>
+    <li><Link className="btncadastro" to="/cadastro">Cadastro</Link></li>
+  </ul>
+</nav>
     </header>
   );
 }
