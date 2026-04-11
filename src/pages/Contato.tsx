@@ -1,111 +1,102 @@
-import { useState } from 'react';
+import { useForm } from "react-hook-form";
+
+type ContatoFormData = {
+  nome: string;
+  cpf: string;
+  email: string;
+};
 
 export function Contato() {
+  const { register, handleSubmit, formState: { errors }, reset } = useForm<ContatoFormData>();
 
-  // UseStates para controlar os campos do formulário e a mensagem de erro
-
-  const [nome, setNome] = useState('');
-  const [cpf, setCpf] = useState('');
-  const [email, setEmail] = useState('');
-  const [msgErro, setMsgErro] = useState('');
-
-  // Lógica do sistema de cadastro
-
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault(); 
-
-    // Validação de nome 
-
-    if (nome.trim().length < 3) {
-      setMsgErro("O nome deve ter pelo menos 3 caracteres.");
-      return;
-    }
-
-    // Validação de CPF 
-    
-    if (cpf.replace(/\D/g, '').length !== 11) {
-      setMsgErro("Digite um CPF válido com 11 dígitos.");
-      return;
-    }
-
-    // Validação de email 
-
-    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!regexEmail.test(email)) {
-      setMsgErro("Digite um email válido.");
-      return;
-    }
-
-    setMsgErro("");
+  const onSubmit = (data: ContatoFormData) => {
+    console.log(data);
     alert("Informações enviadas com sucesso!");
-    setNome('');
-    setCpf('');
-    setEmail('');
+    reset();
   };
 
   return (
-    <main className="conteudo">
-      <section className="contato">
+    <main className="flex-grow max-w-[1100px] mx-auto my-12 px-5 pb-24">
+      <section className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
         <article>
-          <h2>Insira suas informações de contato:</h2>
+          <h2 className="text-2xl font-bold text-[#333] mb-8">Insira suas informações de contato:</h2>
       
-          <form id="formContato" onSubmit={handleSubmit}>
-            <label htmlFor="nome">Nome:</label><br />
-            <input 
-              type="text" 
-              id="nome" 
-              name="nome" 
-              value={nome}
-              onChange={(e) => setNome(e.target.value)}
-              required 
-            /><br /><br />
+          <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-            <label htmlFor="cpf">CPF:</label><br />
-            <input 
-              type="text" 
-              id="cpf" 
-              name="cpf" 
-              maxLength={14} 
-              value={cpf}
-              onChange={(e) => setCpf(e.target.value)}
-              required 
-            /><br /><br />
+            {/* Nome */}
+            <div className="flex flex-col">
+              <label htmlFor="nome" className="font-semibold mb-2 text-[#333]">Nome:</label>
+              <input 
+                {...register("nome", { 
+                  required: "O nome é obrigatório", 
+                  minLength: { value: 3, message: "Mínimo 3 caracteres" } 
+                })}
+                className="border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-[#66C845] focus:border-transparent outline-none transition-all"
+                placeholder="Seu nome completo"
+              />
+              {errors.nome && <p className="text-red-600 text-sm font-bold mt-1">{errors.nome.message}</p>}
+            </div>
 
-            <label htmlFor="email">Email:</label><br />
-            <input 
-              type="email" 
-              id="email" 
-              name="email" 
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required 
-            /><br /><br />
+            {/* CPF */}
+            <div className="flex flex-col">
+              <label htmlFor="cpf" className="font-semibold mb-2 text-[#333]">CPF:</label>
+              <input 
+                {...register("cpf", { 
+                  required: "O CPF é obrigatório", 
+                  pattern: { value: /^\d{11}$/, message: "Digite 11 números sem pontos ou traços." } 
+                })}
+                className="border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-[#66C845] focus:border-transparent outline-none transition-all"
+                placeholder="00000000000"
+              />
+              {errors.cpf && <p className="text-red-600 text-sm font-bold mt-1">{errors.cpf.message}</p>}
+            </div>
 
-            <button type="submit">Enviar</button>
+            {/* Email */}
+            <div className="flex flex-col md:col-span-2">
+              <label htmlFor="email" className="font-semibold mb-2 text-[#333]">Email:</label>
+              <input 
+                type="email"
+                {...register("email", { 
+                  required: "O email é obrigatório", 
+                  pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Email inválido" } 
+                })}
+                className="border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-[#66C845] focus:border-transparent outline-none transition-all"
+                placeholder="exemplo@email.com"
+              />
+              {errors.email && <p className="text-red-600 text-sm font-bold mt-1">{errors.email.message}</p>}
+            </div>
 
-            
-            <p id="erro" style={{ color: 'red', fontWeight: 'bold' }}>
-              {msgErro}
-            </p>
+            <div className="md:col-span-2">
+              <button 
+                type="submit" 
+                className="bg-[#F68B1E] text-white font-bold py-3 px-10 rounded-full hover:bg-[#66C845] transition-all duration-300 shadow-md"
+              >
+                Enviar
+              </button>
+            </div>
           </form>
 
-          <h2>Fale Conosco</h2>
-          <img 
-            src="/img/tratamento.jpg" 
-            alt="Tratamento Odontológico" 
-            width="400" 
-            height="300" 
-          />
+          <div className="mt-16 border-t pt-10">
+            <h2 className="text-3xl font-bold text-[#F68B1E] mb-6">Fale Conosco</h2>
+            <div className="flex flex-col lg:flex-row gap-10 items-start">
+              <img 
+                src="/img/tratamento.jpg" 
+                alt="Tratamento Odontológico" 
+                className="w-full lg:w-1/2 rounded-2xl shadow-lg border-2 border-[#66C845]"
+              />
 
-          <address>
-            <p>
-              <strong>| Rua Maurício Francisco Klabin, 449 Vila Mariana, São Paulo – SP, 04120-020 |</strong>
-            </p>
-
-            <strong>Fone: +55 (11) 5084-7276 |</strong><br />
-            <strong>Presidente: turmadobem@tdb.org.br |</strong><br />
-            <strong>Comunicação: comunicacao@tdb.org.br |</strong>
-          </address>
+              <address className="not-italic bg-[#FFFFE0] p-6 rounded-lg border-l-8 border-[#F68B1E] w-full lg:w-1/2">
+                <p className="mb-4 text-lg">
+                  <strong>| Rua Maurício Francisco Klabin, 449 Vila Mariana, São Paulo – SP, 04120-020 |</strong>
+                </p>
+                <div className="space-y-2 text-[#333]">
+                  <p><strong>Fone:</strong> +55 (11) 5084-7276</p>
+                  <p><strong>Presidente:</strong> turmadobem@tdb.org.br</p>
+                  <p><strong>Comunicação:</strong> comunicacao@tdb.org.br</p>
+                </div>
+              </address>
+            </div>
+          </div>
         </article>
       </section>
     </main>

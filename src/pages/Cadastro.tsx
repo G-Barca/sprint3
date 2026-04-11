@@ -1,83 +1,82 @@
-import { useState } from 'react';
+import { useForm } from "react-hook-form";
+
+
+type CadastroFormData = {
+  nome: string;
+  nascimento: string;
+  email: string;
+};
 
 export function Cadastro() {
 
-  // UseStates para controlar os campos do formulário e a mensagem de erro
+  //  React Hook Form
 
-  const [nome, setNome] = useState('');
-  const [email, setEmail] = useState('');
-  const [nascimento, setNascimento] = useState('');
-  const [msgErro, setMsgErro] = useState('');
+  const { register, handleSubmit, formState: { errors }, reset } = useForm<CadastroFormData>();
 
-  //  lógica do sistema de cadastro
-
-  const handleCadastro = (event: React.FormEvent) => {
-    event.preventDefault(); 
-
-    // Validação de nome com .lenght (min 3) e .trim para evitar espaços em branco
-
-    if (nome.trim().length < 3) {
-      setMsgErro("O nome deve ter pelo menos 3 caracteres.");
-      return;
-    }
-
-    // Validação de email com regex e msg de erro
-
-    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!regexEmail.test(email)) {
-      setMsgErro("Digite um email válido.");
-      return;
-    }
-
-    setMsgErro(""); 
+  const onSubmit = (data: CadastroFormData) => {
+    console.log(data);
     alert("Cadastro realizado com sucesso!");
-    setNome('');
-    setEmail('');
-    setNascimento('');
+    reset();
   };
 
-   // Return do formulário de cadastro
-
   return (
-    <main className="conteudo">
-      <section className="index">
+    <main className="flex-grow max-w-[1100px] mx-auto my-12 px-5 pb-24">
+      <section className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
         <article>
-          <h1>Cadastro</h1>
-          <h2>Insira seus dados:</h2>
+          <h1 className="text-3xl font-bold text-[#F68B1E] mb-2">Cadastro</h1>
+          <h2 className="text-1g text-gray-600 mb-8">Insira seus dados:</h2>
 
-          <form id="formCadastro" onSubmit={handleCadastro}>
-            <label htmlFor="nome">Nome:</label><br />
-            <input 
-              type="text" 
-              id="nome" 
-              value={nome}
-              onChange={(e) => setNome(e.target.value)} 
-              required 
-            /><br /><br />
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 max-w-lg">
 
-            <label htmlFor="nascimento">Data de Nascimento:</label><br />
-            <input 
-              type="date" 
-              id="nascimento" 
-              value={nascimento}
-              onChange={(e) => setNascimento(e.target.value)} 
-              required 
-            /><br /><br />
+            {/* Nome */}
 
-            <label htmlFor="email">Email:</label><br />
-            <input 
-              type="email" 
-              id="email" 
-              value={email}
-              onChange={(e) => setEmail(e.target.value)} 
-              required 
-            /><br /><br />
+            <div className="flex flex-col">
+              <label htmlFor="nome" className="font-semibold mb-2 text-[#333]">Nome:</label>
+              <input 
+                {...register("nome", { 
+                  required: "O nome é obrigatório", 
+                  minLength: { value: 3, message: "O nome deve ter pelo menos 3 caracteres." } 
+                })}
+                className="border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-[#66C845] outline-none transition-all"
+                placeholder="Seu nome completo"
+              />
+              {errors.nome && <p className="text-red-600 text-sm font-bold mt-1">{errors.nome.message}</p>}
+            </div>
 
-            <button type="submit">Enviar</button>
+            {/* Nascimento */}
 
-            <p id="erro" style={{ color: 'red', fontWeight: 'bold' }}>
-              {msgErro}
-            </p>
+            <div className="flex flex-col">
+              <label htmlFor="nascimento" className="font-semibold mb-2 text-[#333]">Data de Nascimento:</label>
+              <input 
+                type="date"
+                {...register("nascimento", { required: "A data de nascimento é obrigatória" })}
+                className="border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-[#66C845] outline-none transition-all"
+              />
+              {errors.nascimento && <p className="text-red-600 text-sm font-bold mt-1">{errors.nascimento.message}</p>}
+            </div>
+
+            {/* Email */}
+            
+            <div className="flex flex-col">
+              <label htmlFor="email" className="font-semibold mb-2 text-[#333]">Email:</label>
+              <input 
+                type="email"
+                {...register("email", { 
+                  required: "O email é obrigatório", 
+                  pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Digite um email válido." } 
+                })}
+                className="border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-[#66C845] outline-none transition-all"
+                placeholder="exemplo@email.com"
+              />
+              {errors.email && <p className="text-red-600 text-sm font-bold mt-1">{errors.email.message}</p>}
+            </div>
+
+            <button 
+              type="submit" 
+              className="bg-[#F68B1E] text-white font-bold py-3 px-10 rounded-full hover:bg-[#66C845] transition-all duration-300 shadow-md"
+            >
+              Enviar
+            </button>
           </form>
         </article>
       </section>
