@@ -398,6 +398,18 @@ footer {
     transform: translateX(0);
   }
 
+  
+  .nav-list.active li {
+    opacity: 1;
+    animation: navLinkFade 0.5s ease forwards;
+  }
+
+  .nav-list.active a {
+    display: block; 
+    width: 80%;    
+    text-align: center;
+  }
+
   @keyframes navLinkFade {
     from {
       opacity: 0;
