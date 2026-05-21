@@ -13,17 +13,19 @@ import { Voluntario } from '../pages/Voluntario';
 function App() {
   return (
     <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/integrantes" element={<Integrantes/>} />
-        <Route path="/sobre" element={<Sobre/>} />
-        <Route path="/contato" element={<Contato/>} />
-        <Route path="/faq" element={<FAQ/>} />
-        <Route path="/cadastro" element={<Cadastro/>} />
-        <Route path="/voluntario" element={<Voluntario/>} />
-      </Routes>
-      <Footer />
+      <div className="min-h-screen flex flex-col pb-[60px] text-[#333]">
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="/integrantes" element={<Integrantes/>} />
+          <Route path="/sobre" element={<Sobre/>} />
+          <Route path="/contato" element={<Contato/>} />
+          <Route path="/faq" element={<FAQ/>} />
+          <Route path="/cadastro" element={<Cadastro/>} />
+          <Route path="/voluntario" element={<Voluntario/>} />
+        </Routes>
+        <Footer />
+      </div>
     </BrowserRouter>
   );
 }
