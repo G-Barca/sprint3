@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-
+import { useEffect } from 'react';
 
 type CadastroFormData = {
   nome: string;
@@ -18,7 +18,9 @@ export function Cadastro() {
     alert("Cadastro realizado com sucesso!");
     reset();
   };
-
+useEffect(() => {
+  document.title = 'Cadastro | Turma do Bem';
+}, []);
   return (
     <main className="flex-grow max-w-[1100px] mx-auto my-12 px-5 pb-24">
       <section className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">

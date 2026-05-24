@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTema } from '../Context/ThemeContext';
 
 export function Header() {
   const [menuAtivo, setMenuAtivo] = useState(false);
+  const { tema, alternarTema } = useTema();
 
   return (
     <header className="relative bg-[#5f5b5b] border-b-[3px] border-[#66C845] px-8 py-4 flex flex-col md:flex-row items-center md:justify-between">
 
       {/* Logo */}
-
       <div className="group flex items-center mb-2 md:mb-0 pr-5">
         <Link to="/">
           <img
@@ -24,8 +25,7 @@ export function Header() {
 
       <nav>
 
-        {/* menu hamburguer */}
-
+        {/* Menu hambúrguer */}
         <div
           className="md:hidden cursor-pointer z-[10000] relative"
           onClick={() => setMenuAtivo(!menuAtivo)}
@@ -35,8 +35,7 @@ export function Header() {
           <div className={`w-8 h-[3px] bg-white my-[6px] transition-all duration-300 ${menuAtivo ? 'rotate-45 -translate-y-[9px]' : ''}`} />
         </div>
 
-        {/* Links/paths */}
-
+        {/* Links */}
         <ul className={`
           list-none m-0 p-0 flex flex-wrap justify-center gap-[10px]
           md:flex-nowrap md:gap-[25px]
@@ -47,12 +46,12 @@ export function Header() {
           ${menuAtivo ? 'max-md:translate-x-0' : 'max-md:translate-x-full'}
         `}>
           {[
-            { label: 'Sobre',        path: '/sobre' },
-            { label: 'Integrantes',  path: '/integrantes' },
-            { label: 'Contato',      path: '/contato' },
-            { label: 'Voluntário',   path: '/voluntario' },
-            { label: 'FAQ',          path: '/faq' },
-            { label: 'Cadastro',     path: '/cadastro' },
+            { label: 'Sobre',       path: '/sobre' },
+            { label: 'Integrantes', path: '/integrantes' },
+            { label: 'Contato',     path: '/contato' },
+            { label: 'Voluntário',  path: '/voluntario' },
+            { label: 'FAQ',         path: '/faq' },
+            { label: 'Cadastro',    path: '/cadastro' },
           ].map(({ label, path }) => (
             <li
               key={path}
@@ -68,6 +67,15 @@ export function Header() {
           ))}
         </ul>
       </nav>
+
+      {/* Botão de tema */}
+      <button
+        onClick={alternarTema}
+        className="mt-2 md:mt-0 md:ml-4 px-3 py-1 rounded-full border-2 border-[#66C845] text-white text-sm font-bold hover:bg-[#66C845] transition-all duration-300"
+      >
+        {tema === 'claro' ? '🌑' : '☀️'}
+      </button>
+
     </header>
   );
 }

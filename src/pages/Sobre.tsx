@@ -1,4 +1,8 @@
+import { useEffect } from 'react';
 export function Sobre() {
+  useEffect(() => {
+  document.title = 'Sobre | Turma do Bem';
+}, []);
   return (
     <main className="flex-grow max-w-[900px] mx-auto my-12 px-5 pb-24">
       <section className="bg-white p-8 md:p-12 rounded-xl shadow-sm border border-gray-100">
