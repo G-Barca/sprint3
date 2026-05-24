@@ -9,14 +9,17 @@ import { Contato } from '../pages/Contato';
 import { FAQ } from '../pages/Faq';
 import { Cadastro } from '../pages/Cadastro';
 import { Voluntario } from '../pages/Voluntario';
+import { VoluntarioDetalhe } from '../pages/VoluntarioDetalhe';
 
 function App() {
+
   return (
     <BrowserRouter>
       <ThemeProvider>
         <div className="flex flex-col pb-[60px]">
           <Header />
           <Routes>
+            <Route path="/voluntario/:id" element={<VoluntarioDetalhe />} />
             <Route path="/" element={<Home/>} />
             <Route path="/integrantes" element={<Integrantes/>} />
             <Route path="/sobre" element={<Sobre/>} />
