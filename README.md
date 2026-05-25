@@ -1,73 +1,93 @@
-# React + TypeScript + Vite
+# Turma do Bem — Sprint 4
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Turma do Bem](public/img/logo-turma-do-bem.png)
 
-Currently, two official plugins are available:
+Aplicação Web desenvolvida para a ONG **Turma do Bem**, com o objetivo de otimizar o processo de agendamento entre pacientes e dentistas voluntários.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Descrição do Projeto
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Este website foi desenvolvido como uma proposta de solução tecnológica para a ONG Turma do Bem. O paciente pode consultar horários disponíveis e realizar seu agendamento de forma autônoma, sem depender de um atendente. Os voluntários atualizam sua própria disponibilidade diretamente no sistema, alimentando um calendário centralizado gerenciado pela ONG.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Tecnologias Utilizadas
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **React 19** — biblioteca para construção de interfaces
+- **Vite** — ferramenta de build e desenvolvimento rápido
+- **TypeScript** — tipagem estática com interfaces, union types e intersection types
+- **Tailwind CSS v4** — estilização moderna e responsiva sem CSS externo
+- **React Router DOM** — navegação SPA com rotas estáticas e dinâmicas
+- **React Hook Form** — gerenciamento eficiente de formulários e validações
+- **ViaCEP API** — integração REST para preenchimento automático de endereço
+- **Git Flow** — metodologia de versionamento colaborativo
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Funcionalidades
+
+- Navegação SPA sem recarregamento de página
+- Tema claro/escuro com `useContext`
+- Título dinâmico por página com `useEffect`
+- Formulários com validação e integração com API ViaCEP
+- Rotas dinâmicas com passagem de parâmetros (`/voluntario/:id`)
+- Layout responsivo para Mobile, Tablet e Desktop
+- Página de Integrantes com links para GitHub e LinkedIn
+
+---
+
+## Estrutura de Pastas
+
+```text
+src/
+  components/       # Componentes reutilizáveis (Header, Footer, App)
+  context/          # Contexto global (ThemeContext)
+  pages/            # Páginas da aplicação
+  types/            # Tipos TypeScript (interfaces, union types)
+  index.css         # Importação do Tailwind CSS
+  main.tsx          # Ponto de entrada
+public/
+  img/              # Imagens do projeto
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Como Executar Localmente
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+**1. Clonar o repositório:**
+```bash
+git clone https://github.com/G-Barca/sprint3.git
+cd sprint3
 ```
+
+**2. Instalar as dependências:**
+```bash
+npm install
+```
+
+**3. Iniciar o servidor de desenvolvimento:**
+```bash
+npm run dev
+```
+
+**4.** Acesse `http://localhost:5173` no navegador.
+
+---
+
+## Como Usar
+
+- **Repositório GitHub:** https://github.com/G-Barca/sprint3
+- **Deploy Vercel:** https://sprint3-blond.vercel.app
+- **Vídeo de apresentação:** https://youtu.be/5lybGsyNGgY
+
+---
+
+## Autores
+
+| Nome | RM | Turma |
+|---|---|---|
+| Guilherme Barca Nascimento Silva | RM568517 | 1TDSPB |
+| Juliana de Souza Rodrigues Marques | RM566795 | 1TDSPB |
+| Lucas Gomes Kosio | RM566828 | 1TDSPB |
+
